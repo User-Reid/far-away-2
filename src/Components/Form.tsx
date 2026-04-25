@@ -23,7 +23,7 @@ export default function Form({ setItemsList }: ListProps) {
       id: Date.now(),
     };
 
-    setItemsList((itemsList) => [...itemsList, newItem]);
+    setItemsList((prev) => [...prev, newItem]);
 
     setDescription("");
     setQuantity(1);

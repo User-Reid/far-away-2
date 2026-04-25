@@ -1,4 +1,4 @@
-import type { ItemProps } from "./PackingList";
+import type { ItemProps } from "../App";
 
 export default function Item({
   id,
@@ -6,9 +6,15 @@ export default function Item({
   quantity,
   packed,
   handleDeleteItem,
+  handlePackedItemValue,
 }: ItemProps) {
   return (
     <li>
+      <input
+        type="checkbox"
+        value={packed}
+        onChange={() => handlePackedItemValue(id)}
+      />
       <span style={packed ? { textDecoration: "line-through" } : {}}>
         {quantity} {description}
       </span>

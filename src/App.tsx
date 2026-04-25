@@ -8,7 +8,7 @@ import Stats from "./Components/Stats";
 const initialItems: ItemType[] = [
   { id: 1, description: "Passports", quantity: 2, packed: false },
   { id: 2, description: "Socks", quantity: 12, packed: false },
-  { id: 3, description: "Banana", quantity: 42, packed: true },
+  { id: 3, description: "Banana", quantity: 42, packed: false },
 ];
 
 export type ItemType = {
@@ -20,11 +20,17 @@ export type ItemType = {
 
 export type ItemProps = ItemType & {
   handleDeleteItem: (id: number) => void;
+  itemsList: ItemType[];
+  handlePackedItemValue: (id: number) => void;
 };
 
 export type ListProps = {
   itemsList: ItemType[];
   setItemsList: React.Dispatch<React.SetStateAction<ItemType[]>>;
+};
+
+export type StatsProps = {
+  itemsList: ItemType[];
 };
 
 export default function App() {
@@ -35,7 +41,7 @@ export default function App() {
       <Logo />
       <Form itemsList={itemsList} setItemsList={setItemsList} />
       <PackingList itemsList={itemsList} setItemsList={setItemsList} />
-      <Stats />
+      <Stats itemsList={itemsList} />
     </div>
   );
 }
